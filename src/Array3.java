@@ -82,4 +82,23 @@ public class Array3 {
 
         return(innerCount==innerLen);
     }
+
+    public int[] squareUp(int n) {
+        int[] arr = new int[n*n];
+
+        if(n>0){
+            int row = 1;
+            for(int index = n-1; index < arr.length; index += n){
+                int value = 1;
+                for(int j = index; j>index-row; j--){
+                    arr[j]=value;
+                    value++;
+                }
+                row++;
+            }
+        }
+
+        return arr;
+    }
+
 }
