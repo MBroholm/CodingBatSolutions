@@ -101,4 +101,19 @@ public class Array3 {
         return arr;
     }
 
+    public int[] seriesUp(int n) {
+        int[] arr = new int[n*(n+1)/2];
+
+        int index = 0;
+
+        for(int row = 1; row <= n; row++){
+            for(int value = 1; value <= row; value++){
+                arr[index] = value;
+                index++;
+            }
+        }
+
+        return arr;
+    }
+
 }
