@@ -31,9 +31,9 @@ public class AP1 {
     public int scoresAverage(int[] scores) {
         int split = scores.length/2;
         int leftSum = average(scores,0,split);
-        int rigthSum = average(scores,split,scores.length);
+        int rightSum = average(scores,split,scores.length);
 
-        return Math.max(leftSum, rigthSum);
+        return Math.max(leftSum, rightSum);
     }
 
     public int average(int[] scores, int start, int end){
@@ -83,11 +83,11 @@ public class AP1 {
 
     public boolean dividesSelf(int n) {
         int temp = n;
-        int rigth = 0;
+        int right = 0;
 
         while(temp!=0){
-            rigth = temp%10;
-            if(rigth == 0 || n%rigth!=0) return false;
+            right = temp%10;
+            if(right == 0 || n%right!=0) return false;
             temp /= 10;
         }
         return true;
@@ -105,6 +105,19 @@ public class AP1 {
         }
 
         return result;
+    }
+
+    public int[] copyEndy(int[] nums, int count) {
+        int[] arr = new int[count];
+        int index = 0;
+        for(int num : nums){
+            if(num <= 10 || num >= 90 && num <= 100){
+                arr[index] = num;
+                index++;
+            }
+            if(index == count) break;
+        }
+        return arr;
     }
 
 }
