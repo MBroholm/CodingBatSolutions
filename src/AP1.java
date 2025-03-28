@@ -73,4 +73,38 @@ public class AP1 {
         return list;
     }
 
+    public boolean hasOne(int n) {
+        while(n!=0){
+            if(n%10==1) return true;
+            n = n/10;
+        }
+        return false;
+    }
+
+    public boolean dividesSelf(int n) {
+        int temp = n;
+        int rigth = 0;
+
+        while(temp!=0){
+            rigth = temp%10;
+            if(rigth == 0 || n%rigth!=0) return false;
+            temp /= 10;
+        }
+        return true;
+    }
+
+    public int[] copyEvens(int[] nums, int count) {
+        int[] result = new int[count];
+        int index = 0;
+
+        for(int i = 0; i<nums.length; i++){
+            if(nums[i]%2==0){
+                result[index++]=nums[i];
+            }
+            if(index>count-1) break;
+        }
+
+        return result;
+    }
+
 }
