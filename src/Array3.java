@@ -69,4 +69,17 @@ public class Array3 {
         return false;
     }
 
+    public boolean linearIn(int[] outer, int[] inner) {
+        int innerCount = 0;
+        int innerLen = inner.length;
+
+        for(int i = 0; i<outer.length; i++){
+            if(innerCount==innerLen) break;
+            if(outer[i]==inner[innerCount]){
+                innerCount++;
+            }
+        }
+
+        return(innerCount==innerLen);
+    }
 }
