@@ -116,4 +116,27 @@ public class Array3 {
         return arr;
     }
 
+    public int maxMirror(int[] nums) {
+        int maxSize = 0;
+
+        int len = nums.length;
+
+        for(int i = 0; i<len; i++){
+            for(int j = len-1; j >= 0; j--){
+                int size = 0;
+                int x=i, y=j;
+
+                while(x<len && y>=0 && nums[x]==nums[y]){
+                    size++;
+                    x++;
+                    y--;
+                }
+
+                maxSize = Math.max(size, maxSize);
+            }
+        }
+
+        return maxSize;
+    }
+
 }
