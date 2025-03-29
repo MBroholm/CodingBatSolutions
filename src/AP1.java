@@ -236,4 +236,23 @@ public class AP1 {
         return arr;
     }
 
+    public int commonTwo(String[] a, String[] b) {
+        int count = 0, ai = 0, bi = 0, comp = 0;
+
+        while(ai<a.length && bi<b.length){
+            comp = a[ai].compareTo(b[bi]);
+            if(comp<0){
+                ai++;
+            }else if(comp>0){
+                bi++;
+            }else{
+                if(ai<1 || !a[ai].equals(a[ai-1])) count++;
+                ai++;
+                bi++;
+            }
+        }
+
+        return count;
+    }
+
 }
