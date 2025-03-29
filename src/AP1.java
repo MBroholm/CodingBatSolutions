@@ -174,5 +174,66 @@ public class AP1 {
         return max;
     }
 
+    public int sumHeights(int[] heights, int start, int end) {
+        int count = 0;
+        for(int i = start+1; i<end+1; i++){
+            count += Math.abs(heights[i]-heights[i-1]);
+        }
+        return count;
+    }
+
+    public int sumHeights2(int[] heights, int start, int end) {
+        int count = 0;
+        int diff = 0;
+        for(int i = start+1; i<end+1; i++){
+            diff=Math.abs(heights[i]-heights[i-1]);
+            if(heights[i]>heights[i-1]){
+                count+=2*diff;
+            }else{
+                count+=diff;
+            }
+        }
+        return count;
+    }
+
+    public int bigHeights(int[] heights, int start, int end) {
+        int count = 0;
+        int diff = 0;
+        for(int i = start+1; i<=end; i++){
+            diff = Math.abs(heights[i]-heights[i-1]);
+            if(diff>=5) count++;
+        }
+        return count;
+    }
+
+    public int userCompare(String aName, int aId, String bName, int bId) {
+        int nameComp = aName.compareTo(bName);
+
+        if(nameComp<0 || nameComp==0 && aId<bId){
+            return -1;
+        }else if(nameComp>0 || nameComp ==0 && aId>bId){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    public String[] mergeTwo(String[] a, String[] b, int n) {
+        String[] arr = new String[n];
+        int ai = 0, bi = 0, comp = 0;
+
+        for(int i = 0; i<arr.length; i++){
+            comp = a[ai].compareTo(b[bi]);
+            if(comp<0){
+                arr[i] = a[ai++];
+            }else if(comp>0){
+                arr[i] = b[bi++];
+            }else{
+                arr[i] = a[ai++];
+                bi++;
+            }
+        }
+        return arr;
+    }
 
 }
