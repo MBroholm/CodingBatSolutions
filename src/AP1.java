@@ -132,5 +132,47 @@ public class AP1 {
         return count;
     }
 
+    public int scoreUp(String[] key, String[] answers) {
+        int score = 0;
+        for(int i = 0; i<key.length; i++){
+            score += (answers[i].equals("?")) ? 0 : (answers[i].equals(key[i])) ? +4 : -1;
+        }
+        return score;
+    }
+
+    public String[] wordsWithout(String[] words, String target) {
+        int count = 0;
+        for(String word : words){
+            if(!word.equals(target)) count++;
+        }
+
+        String[] arr = new String[count];
+
+        int index = 0;
+        for(String word : words){
+            if(!word.equals(target)){
+                arr[index++]=word;
+            }
+        }
+
+        return arr;
+    }
+
+    public int scoresSpecial(int[] a, int[] b) {
+        int aMax = largestSpecial(a);
+        int bMax = largestSpecial(b);
+        return aMax + bMax;
+    }
+
+    public int largestSpecial(int[] a){
+        int max = 0;
+        for(int num : a){
+            if(num%10==0){
+                max = Math.max(max,num);
+            }
+        }
+        return max;
+    }
+
 
 }
