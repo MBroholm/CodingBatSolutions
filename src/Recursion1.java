@@ -102,4 +102,35 @@ public class Recursion1 {
         return str.charAt(0) + "*" + allStar(str.substring(1));
     }
 
+    public String endX(String str) {
+        if (str.isEmpty()) return str;
+        if (str.charAt(0) == 'x') return endX(str.substring(1)) + 'x';
+        return str.charAt(0) + endX(str.substring(1));
+    }
+
+    public int countAbc(String str) {
+        if(str.length()<3) return 0;
+        String sub = str.substring(0,3);
+        return (sub.equals("abc") || sub.equals("aba") ? 1 : 0) + countAbc(str.substring(1));
+    }
+
+    public int count11(String str) {
+        if(str.length()<2) return 0;
+        if(str.substring(0,2).equals("11")) return 1 + count11(str.substring(2));
+        return count11(str.substring(1));
+    }
+
+    public String stringClean(String str) {
+        if(str.length()<2) return str;
+        if(str.charAt(0) == str.charAt(1)) return stringClean(str.substring(1));
+        return str.charAt(0) + stringClean(str.substring(1));
+    }
+
+    public int countHi2(String str) {
+        if(str.length()<2) return 0;
+        if(str.length()>2 && str.substring(0,3).equals("xhi")) return countHi2(str.substring(3));
+        if(str.substring(0,2).equals("hi")) return 1 + countHi2(str.substring(2));
+        return countHi2(str.substring(1));
+    }
+
 }
