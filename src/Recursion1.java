@@ -133,4 +133,46 @@ public class Recursion1 {
         return countHi2(str.substring(1));
     }
 
+    public String parenBit(String str) {
+        int last = str.length()-1;
+        if (str.charAt(0) == '(' && str.charAt(last) == ')' ) return str;
+        if (str.charAt(0) != '(' && str.charAt(last) != ')' ) return parenBit(str.substring(1,last));
+        if (str.charAt(0) != '(' ) return parenBit(str.substring(1));
+        return parenBit(str.substring(0, last));
+    }
+
+    public boolean nestParen(String str) {
+        if(str.isEmpty()) return true;
+        int len = str.length();
+        if(len%2 != 0) return false;
+        if(str.charAt(0) != '(' || str.charAt(len-1) != ')') return false;
+        return nestParen(str.substring(1,len-1));
+    }
+
+    public int strCount(String str, String sub) {
+        int subL = sub.length();
+        if ( str.length() < subL ) return 0;
+        if ( str.substring(0,subL).equals(sub) ) return 1 + strCount( str.substring(subL), sub );
+        return strCount( str.substring(1), sub );
+    }
+
+    public boolean strCopies(String str, String sub, int n) {
+        if (n<=0) return true;
+        if (str.length() < sub.length() ) return false;
+        if (str.startsWith(sub)) return (strCopies(str.substring(1), sub, n-1));
+        return (strCopies(str.substring(1), sub, n));
+    }
+
+    public int strDist(String str, String sub) {
+        int len = str.length();
+        int subL = sub.length();
+        boolean starts = str.startsWith(sub);
+        boolean ends = str.endsWith(sub);
+
+        if (len < subL) return 0;
+        if (starts && ends) return len;
+        if (len > 1 && !starts && !ends) return strDist(str.substring(1,len-1), sub);
+        if (!starts) return strDist( str.substring(1), sub );
+        return strDist( str.substring(0,len-1), sub );
+    }
 }
