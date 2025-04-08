@@ -37,4 +37,29 @@ public class Recursion2 {
         }
     }
 
+    public boolean groupSumClump(int start, int[] nums, int target) {
+        if(start>=nums.length) return (target==0);
+
+        int value = nums[start];
+        while(start<nums.length-1 && nums[start]==nums[start+1]){
+            value+=nums[start+1];
+            start++;
+        }
+
+        if(groupSumClump(start+1, nums, target-value)) return true;
+        return groupSumClump(start+1, nums, target);
+    }
+
+    public boolean splitArray(int[] nums) {
+        return helper(nums, 0, 0, 0);
+    }
+
+    public boolean helper(int[] nums, int start, int gOne, int gTwo){
+        if(start >= nums.length) return (gOne == gTwo);
+
+        if(helper(nums, start+1, gOne+nums[start], gTwo)) return true;
+        return helper(nums, start+1, gOne, gTwo+nums[start]);
+    }
+
+
 }
