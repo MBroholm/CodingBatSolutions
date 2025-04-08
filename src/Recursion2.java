@@ -61,5 +61,31 @@ public class Recursion2 {
         return helper(nums, start+1, gOne, gTwo+nums[start]);
     }
 
+    public boolean splitOdd10(int[] nums) {
+        return helper2(nums, 0,0,0);
+    }
 
+    public boolean helper2(int[] nums, int index, int g1, int g2){
+        if(index>=nums.length) return (g1%10 == 0 && g2%2 != 0);
+
+        if(helper2(nums, index+1, g1+nums[index], g2)) return true;
+        return helper2(nums, index+1, g1, g2+nums[index]);
+    }
+
+    public boolean split53(int[] nums) {
+        return helper3(nums,0,0,0);
+    }
+
+    public boolean helper3(int[] nums, int index, int g1, int g2){
+        if(index >= nums.length) return (g1 == g2);
+
+        if(nums[index]%5 == 0){
+            return helper3(nums, index+1, g1+nums[index], g2);
+        }else if(nums[index]%3 == 0){
+            return helper3(nums, index+1, g1, g2+nums[index]);
+        }else{
+            if(helper3(nums, index+1, g1+nums[index], g2)) return true;
+            return helper3(nums, index+1, g1, g2+nums[index]);
+        }
+    }
 }
